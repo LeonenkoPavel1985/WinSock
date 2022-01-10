@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IPaddress", "IPaddress\IPaddress.vcxproj", "{D2742D3C-9792-4EF6-96FF-EC48FBC6149E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ping", "Ping\Ping.vcxproj", "{322F8DF8-E12A-4290-9C51-91EED68784E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{D2742D3C-9792-4EF6-96FF-EC48FBC6149E}.Release|x64.Build.0 = Release|x64
 		{D2742D3C-9792-4EF6-96FF-EC48FBC6149E}.Release|x86.ActiveCfg = Release|Win32
 		{D2742D3C-9792-4EF6-96FF-EC48FBC6149E}.Release|x86.Build.0 = Release|Win32
+		{322F8DF8-E12A-4290-9C51-91EED68784E5}.Debug|x64.ActiveCfg = Debug|x64
+		{322F8DF8-E12A-4290-9C51-91EED68784E5}.Debug|x64.Build.0 = Debug|x64
+		{322F8DF8-E12A-4290-9C51-91EED68784E5}.Debug|x86.ActiveCfg = Debug|Win32
+		{322F8DF8-E12A-4290-9C51-91EED68784E5}.Debug|x86.Build.0 = Debug|Win32
+		{322F8DF8-E12A-4290-9C51-91EED68784E5}.Release|x64.ActiveCfg = Release|x64
+		{322F8DF8-E12A-4290-9C51-91EED68784E5}.Release|x64.Build.0 = Release|x64
+		{322F8DF8-E12A-4290-9C51-91EED68784E5}.Release|x86.ActiveCfg = Release|Win32
+		{322F8DF8-E12A-4290-9C51-91EED68784E5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
