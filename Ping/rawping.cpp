@@ -64,7 +64,8 @@ extern void init_ping_packet(ICMPHeader* icmp_hdr, int packet_size, int seq_no)
 	icmp_hdr->type = ICMP_ECHO_REQUEST;
 	icmp_hdr->code = 0;
 	icmp_hdr->checksum = 0;
-	icmp_hdr->id = (USHORT)GetCurrentProcessId(); // 
+	icmp_hdr->id = (USHORT)GetCurrentProcessId(); // Для того, чтобы отличать ICMP - сообщения
+	                                              // если запущено несколько экземпляров программы.
 	icmp_hdr->seq = seq_no;
 	icmp_hdr->timestamp = GetTickCount();
 
