@@ -65,14 +65,14 @@ extern void init_ping_packet(ICMPHeader* icmp_hdr, int packet_size, int seq_no)
 	icmp_hdr->code = 0;
 	icmp_hdr->checksum = 0;
 	icmp_hdr->id = (USHORT)GetCurrentProcessId(); // Для того, чтобы отличать ICMP - сообщения
-	                                              // если запущено несколько экземпляров программы.
+												  // если запущено несколько экземпляров программы.
 	icmp_hdr->seq = seq_no;
 	icmp_hdr->timestamp = GetTickCount();
 
 	const unsigned int dead = 0xDEADBEEF;
 	char* deadpart = (char*)icmp_hdr + sizeof(ICMPHeader);
 	int bytes_left = packet_size - sizeof(ICMPHeader);
-	while (bytes_left)
+	while (bytes_left >= 0)
 	{
 		memcpy(deadpart, &dead, min(sizeof(dead), bytes_left));
 		bytes_left -= sizeof(dead);
@@ -140,26 +140,26 @@ extern int decode_reply(IPHeader* reply, int bytes, sockaddr_in* from)
 			}
 			return -1;
 		}
-		else if (icmphdr->id != (USHORT)GetCurrentProcessId())
-		{
-			return -2;
-		}
-
-		int nHops = 256 - reply->ttl;
-		if (nHops == 192)nHops = 1;
-		else if (nHops == 128)nHops = 0;
-
-		cout << bytes << " bytes from " << inet_ntoa(from->sin_addr) << ", icmp_seq " << icmphdr->seq << ", ";
-		if (icmphdr->type == ICMP_TTL_EXPIRE)
-		{
-			cout << "TTL expired." << endl;
-		}
-		else
-		{
-			cout << nHops << " hops";
-			cout << ", time: " << (GetTickCount() - icmphdr->timestamp) << " ms.";
-		}
-
-		return 0;
 	}
+	else if (icmphdr->id != (USHORT)GetCurrentProcessId())
+	{
+		return -2;
+	}
+
+	int nHops = 256 - reply->ttl;
+	if (nHops == 192)nHops = 1;
+	else if (nHops == 128)nHops = 0;
+
+	cout << bytes << " bytes from " << inet_ntoa(from->sin_addr) << ", icmp_seq " << icmphdr->seq << ", ";
+	if (icmphdr->type == ICMP_TTL_EXPIRE)
+	{
+		cout << "TTL expired." << endl;
+	}
+	else
+	{
+		cout << nHops << " hops";
+		cout << ", time: " << (GetTickCount() - icmphdr->timestamp) << " ms.";
+	}
+
+	return 0;
 }
