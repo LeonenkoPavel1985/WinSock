@@ -2,6 +2,8 @@
 #define WIN32_LEAN_AND_MEAN
 #include <WinSock2.h>
 
+#include"ip_checksum.h"
+
 //ICMP packet types
 
 #define ICMP_ECHO_REQUEST 8
