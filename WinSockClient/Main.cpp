@@ -82,6 +82,7 @@ int main(int argc, char* argv[])
 	/////////////////////////////////////////////////////////////
 
 	int recvbuflen = DEFAULT_BUFLEN; //размер буфера получения
+	//const char* sendbuf = "this is a test";
 	const char* sendbuf = "this is a test";
 	char recvbuf[DEFAULT_BUFLEN]{};
 
